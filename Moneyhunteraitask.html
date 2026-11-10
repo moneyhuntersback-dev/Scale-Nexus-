@@ -115,18 +115,19 @@
             box-shadow: inset 0 0 15px rgba(56,189,248,0.2);
         }
         .reward-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 800;
+            color: #fbbf24;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(251,191,36,0.5);
         }
         .reward-amount {
-            font-size: 52px;
+            font-size: 56px;
             font-weight: 900;
-            color: #10b981;
-            text-shadow: 0 0 20px rgba(16,185,129,0.6);
+            color: #34d399;
+            text-shadow: 0 0 25px rgba(52,211,153,0.8), 0 0 10px rgba(251,191,36,0.5);
             margin: 0;
         }
 
@@ -149,55 +150,64 @@
             border: 2px solid #334155;
             border-radius: 12px;
             padding: 4px 12px;
+            padding-left: 55px; /* Space for the logo box */
             transition: border-color 0.3s;
+            height: 60px;
         }
         .input-wrapper:focus-within {
             border-color: #00f5d4;
         }
+
+        /* Strict Left-Aligned Sliding Logo Box */
+        .logo-slot {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 8px rgba(0,245,212,0.4);
+            border: 1px solid #e2e8f0;
+        }
+        .logo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: carousel 15s infinite;
+        }
+
+        .logo-slot img:nth-child(1) { animation-delay: 0s; }
+        .logo-slot img:nth-child(2) { animation-delay: 3s; }
+        .logo-slot img:nth-child(3) { animation-delay: 6s; }
+        .logo-slot img:nth-child(4) { animation-delay: 9s; }
+        .logo-slot img:nth-child(5) { animation-delay: 12s; }
+
+        @keyframes carousel {
+            0%, 18% { opacity: 1; transform: translateY(0); }
+            20%, 98% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+
         .upi-input {
             flex: 1;
             background: transparent;
             border: none;
             color: white;
             font-size: 16px;
-            padding: 12px 0;
+            padding: 10px 0;
             outline: none;
+            width: 100%;
         }
         .upi-input::placeholder {
             color: #64748b;
-        }
-
-        /* Side Animated Logos */
-        .sliding-logos {
-            display: flex;
-            gap: 8px;
-            margin-left: 10px;
-        }
-        .logo-frame {
-            width: 36px;
-            height: 36px;
-            background: white;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 4px;
-            box-shadow: 0 0 8px rgba(255,255,255,0.2);
-            animation: slideUpdown 2s ease-in-out infinite;
-        }
-        .logo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .logo-frame:nth-child(2) { animation-delay: 0.4s; }
-        .logo-frame:nth-child(3) { animation-delay: 0.8s; }
-        .logo-frame:nth-child(4) { animation-delay: 1.2s; }
-        .logo-frame:nth-child(5) { animation-delay: 1.6s; }
-
-        @keyframes slideUpdown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
         }
 
         .submit-btn {
@@ -212,7 +222,7 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(16,185,129,0.3);
+            box-shadow: 0 0 20px rgba(16,185,129,0.6);
             transition: transform 0.1s, filter 0.2s;
         }
         .submit-btn:hover {
@@ -329,21 +339,20 @@
         <div class="reward-amount">₹300</div>
     </div>
 
-    <!-- Form with Side Animated Logos -->
-    <form action="https://moneyhuntersback-dev.github.io/Scale-Nexus-/Moneyhunteraitask.html" method="GET">
+    <!-- Form with Guaranteed Instant Redirect -->
+    <form onsubmit="event.preventDefault(); window.location.href='https://moneyhuntersback-dev.github.io/Scale-Nexus-/Moneyhunteraitask.html';">
         <div class="form-group">
             <label class="input-label">Enter Campaign Registered UPI ID</label>
             <div class="input-wrapper">
-                <input type="text" name="upi_id" class="upi-input" placeholder="example@upi" required>
-                
-                <!-- 5 Animated Logos positioned strictly beside the input -->
-                <div class="sliding-logos">
-                    <div class="logo-frame"><img src="https://cdn.phototourl.com/member/2026-11-10-d1040245-8fec-4827-8481-39290e814ba0.png" alt="BHIM"></div>
-                    <div class="logo-frame"><img src="https://cdn.phototourl.com/member/2026-11-10-0f9af91e-bf67-44a1-a972-91d8066dbdad.png" alt="PhonePe"></div>
-                    <div class="logo-frame"><img src="https://cdn.phototourl.com/member/2026-11-10-609a87bd-4518-4e25-8c9e-10dfc0d9306c.jpg" alt="FamPay"></div>
-                    <div class="logo-frame"><img src="https://cdn.phototourl.com/member/2026-11-10-9f9cfa9e-61f8-4ae6-aa50-0722ecbcbcbc.png" alt="GPay"></div>
-                    <div class="logo-frame"><img src="https://cdn.phototourl.com/member/2026-11-10-0e19eae9-d8c0-4cf2-8b7f-efc09fe85d37.png" alt="Paytm"></div>
+                <!-- Strict Left-Aligned Carousel Slot -->
+                <div class="logo-slot">
+                    <img src="https://cdn.phototourl.com/member/2026-11-10-d1040245-8fec-4827-8481-39290e814ba0.png" alt="BHIM">
+                    <img src="https://cdn.phototourl.com/member/2026-11-10-0f9af91e-bf67-44a1-a972-91d8066dbdad.png" alt="PhonePe">
+                    <img src="https://cdn.phototourl.com/member/2026-11-10-609a87bd-4518-4e25-8c9e-10dfc0d9306c.jpg" alt="FamPay">
+                    <img src="https://cdn.phototourl.com/member/2026-11-10-9f9cfa9e-61f8-4ae6-aa50-0722ecbcbcbc.png" alt="GPay">
+                    <img src="https://cdn.phototourl.com/member/2026-11-10-0e19eae9-d8c0-4cf2-8b7f-efc09fe85d37.png" alt="Paytm">
                 </div>
+                <input type="text" name="upi_id" class="upi-input" placeholder="example@upi" required>
             </div>
         </div>
 
@@ -361,7 +370,7 @@
         <div class="step-text">Complete the verification task on the next page.</div>
     </div>
 
-    <!-- Important Notice -->
+    <!-- Notice Box -->
     <div class="notice-box">
         <div class="notice-header">⚠️ Important Notice</div>
         <ul class="notice-list">
@@ -374,5 +383,6 @@
 
 </body>
 </html>
+
 
 
