@@ -1,28 +1,199 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Task Portal</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      background-color: #0A0F1D;
-    }
-    iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Emergent AI Task Portal</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 15px;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* Main Brand Logo */
+        .brand img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .brand-text h1 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        .brand-text p {
+            margin: 0;
+            font-size: 10px;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+
+        /* Reward Card */
+        .reward-card {
+            background: linear-gradient(135deg, #00B4DB, #0083B0);
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 180, 219, 0.3);
+        }
+        .reward-card h2 {
+            margin: 10px 0 0;
+            font-size: 34px;
+        }
+        .reward-card p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Form Section */
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-section label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #444;
+        }
+        .form-section input {
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-section input:focus {
+            border-color: #0083B0;
+        }
+        .submit-btn {
+            padding: 14px;
+            background-color: #0083B0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, transform 0.1s;
+        }
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Animated UPI Logos Section */
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding: 10px 5px;
+        }
+        .upi-logo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #fff;
+            padding: 6px;
+            /* 3D Smooth Float Animation */
+            animation: float 3s ease-in-out infinite; 
+        }
+
+        /* Staggered Delay for wave effect */
+        .upi-logo:nth-child(1) { animation-delay: 0s; }
+        .upi-logo:nth-child(2) { animation-delay: 0.2s; }
+        .upi-logo:nth-child(3) { animation-delay: 0.4s; }
+        .upi-logo:nth-child(4) { animation-delay: 0.6s; }
+        .upi-logo:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
 <body>
-  <iframe src="https://offer.pathakcpa.in/campaign/htlbu2" allow="camera;microphone;fullscreen"></iframe>
+
+<div class="container">
+    <!-- Header with Emergent AI Logo -->
+    <div class="header">
+        <div class="brand">
+            <img src="https://cdn.phototourl.com/member/2026-11-10-225d6421-bb82-4388-8815-101a13b5856b.webp" alt="Emergent AI">
+            <div class="brand-text">
+                <h1>Emergent AI</h1>
+                <p>VERIFIED TASK PORTAL</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reward Card Section -->
+    <div class="reward-card">
+        <p>Total Assured Cashback</p>
+        <h2>₹300</h2>
+    </div>
+
+    <!-- Offer Tracking Link implemented in the Action -->
+    <form class="form-section" action="https://moneyhuntersback-dev.github.io/Scale-Nexus-/Moneyhunteraitask.html" method="GET">
+        <label>Enter your Campaign Registered UPI ID</label>
+        <input type="text" name="upi_id" placeholder="Ex: name@upi" required>
+        <button type="submit" class="submit-btn">Claim Cashback Now</button>
+    </form>
+
+    <!-- Animated UPI Logos Container -->
+    <div class="logo-container">
+        <!-- BHIM -->
+        <img src="https://cdn.phototourl.com/member/2026-11-10-d1040245-8fec-4827-8481-39290e814ba0.png" class="upi-logo" alt="BHIM">
+        <!-- PhonePe -->
+        <img src="https://cdn.phototourl.com/member/2026-11-10-0f9af91e-bf67-44a1-a972-91d8066dbdad.png" class="upi-logo" alt="PhonePe">
+        <!-- FamPay -->
+        <img src="https://cdn.phototourl.com/member/2026-11-10-609a87bd-4518-4e25-8c9e-10dfc0d9306c.jpg" class="upi-logo" alt="FamPay">
+        <!-- GPay -->
+        <img src="https://cdn.phototourl.com/member/2026-11-10-9f9cfa9e-61f8-4ae6-aa50-0722ecbcbcbc.png" class="upi-logo" alt="GPay">
+        <!-- Paytm (3D Look) -->
+        <img src="https://cdn.phototourl.com/member/2026-11-10-0e19eae9-d8c0-4cf2-8b7f-efc09fe85d37.png" class="upi-logo" alt="Paytm">
+    </div>
+</div>
+
 </body>
 </html>
 
