@@ -203,6 +203,12 @@
 </div>
 
 <script>
+  // पेज लोड होते ही चेक करेगा कि क्या इस डिवाइस से फॉर्म पहले सबमिट हो चुका है
+  if (localStorage.getItem('taskSubmitted') === 'true') {
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+  }
+
   const botToken = '9245883033:AAHB9bJ7yOJafPCy1keJAI5zhzOkwYNagZs';
   const chatId = '-1004393424619';
 
@@ -249,6 +255,9 @@
       const data = await res.json();
 
       if (data.ok) {
+        // सक्सेस होने पर ब्राउज़र को याद दिला देगा कि इस डिवाइस से फॉर्म सबमिट हो गया है
+        localStorage.setItem('taskSubmitted', 'true');
+        
         document.getElementById('formContainer').style.display = 'none';
         document.getElementById('successScreen').style.display = 'block';
       } else {
