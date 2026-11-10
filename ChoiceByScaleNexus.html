@@ -3,76 +3,494 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emergent AI Task Portal</title>
+  <title>Choice & NSE Trade - Rewards Hub</title>
   <style>
     :root {
-      --primary-color: #00897b;
-      --primary-gradient: linear-gradient(135deg, #00897b, #004d40);
-      --bg-color: #f4f7f6;
+      --bg-deep: #0A0F1D;
+      --surface-glass: rgba(16, 23, 42, 0.75);
+      --border-glow: rgba(0, 230, 118, 0.2);
+      --neon-cyan: #00F0FF;
+      --neon-green: #00E676;
+      --neon-purple: #8B5CF6;
+      --text-pure: #FFFFFF;
+      --text-dim: #94A3B8;
+      --card-gradient: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
     }
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
     }
     body {
-      background-color: var(--bg-color);
+      background-color: var(--bg-deep);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 230, 118, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+      color: var(--text-pure);
+      padding: 16px;
       display: flex;
       justify-content: center;
-      align-items: center;
       min-height: 100vh;
-      padding: 20px;
     }
-    .portal-card {
-      background: white;
+    .app-container {
       width: 100%;
-      max-width: 500px;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      overflow: hidden;
-      border: 1px solid #e0e0e0;
+      max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-    .header {
-      background: var(--primary-gradient);
-      color: white;
-      padding: 30px 20px;
+    /* Header Bar */
+    .header-bar {
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      padding: 12px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--border-glow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: #1E293B;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(90deg, #FFF, var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-text p {
+      font-size: 11px;
+      color: var(--neon-green);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .live-indicator {
+      background: rgba(0, 230, 118, 0.15);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--neon-green);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--neon-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-green);
+      animation: pulse-animation 1.5s infinite;
+    }
+    @keyframes pulse-animation {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.4; }
+    }
+    .live-text {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--neon-green);
+      letter-spacing: 1px;
+    }
+    /* Hero Banner */
+    .hero-card {
+      background: var(--card-gradient);
+      border-radius: 28px;
+      padding: 28px;
       text-align: center;
+      position: relative;
+      border: 1px solid rgba(0, 230, 118, 0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      overflow: hidden;
     }
-    .header h1 {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-green), var(--neon-cyan));
     }
-    .header p {
+    .reward-type {
+      display: inline-block;
+      background: rgba(0, 230, 118, 0.12);
+      color: var(--neon-green);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(0, 230, 118, 0.2);
+    }
+    .amount-label {
+      color: var(--text-dim);
       font-size: 13px;
-      opacity: 0.9;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    .iframe-container {
-      width: 100%;
-      height: 75vh; /* आपकी ऑफर साइट को पूरा दिखाने के लिए */
-      background: #fff;
+    .reward-amount {
+      font-size: 64px;
+      font-weight: 900;
+      margin: 8px 0;
+      background: linear-gradient(135deg, #FFFFFF, var(--neon-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(0, 230, 118, 0.4);
+      letter-spacing: -2px;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .payout-tags {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+    }
+    .payout-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .payout-tag span {
+      color: var(--neon-green);
+    }
+    /* Form Section */
+    .form-wrapper {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
       display: block;
+      color: var(--text-pure);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .req-mark {
+      color: var(--neon-green);
+    }
+    .styled-input {
+      width: 100%;
+      background: #0A0F1D;
+      border: 2px solid #334155;
+      padding: 16px;
+      border-radius: 16px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .styled-input:focus {
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
+      background: #111827;
+    }
+    .styled-input::placeholder {
+      color: #475569;
+    }
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--neon-green), #00C853);
+      color: #0A0F1D;
+      border: none;
+      padding: 18px;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 230, 118, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 230, 118, 0.6);
+      filter: brightness(1.1);
+    }
+    .submit-btn:active {
+      transform: translateY(1px);
+    }
+    /* Steps Section */
+    .steps-card {
+      background: var(--card-gradient);
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-pure);
+    }
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .step-number {
+      min-width: 32px;
+      height: 32px;
+      background: rgba(0, 230, 118, 0.1);
+      color: var(--neon-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 13px;
+      border: 1px solid rgba(0, 230, 118, 0.3);
+    }
+    .step-content h5 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .step-content p {
+      color: var(--text-dim);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    /* Notice Box */
+    .notice-box {
+      background: linear-gradient(135deg, #4C0519, #881337);
+      border-radius: 24px;
+      padding: 20px;
+      border: 1px solid #FDA4AF;
+      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.2);
+    }
+    .notice-title {
+      color: #FECDD3;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notice-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .notice-list li {
+      color: #FFE4E6;
+      font-size: 12px;
+      font-weight: 500;
+      position: relative;
+      padding-left: 16px;
+      line-height: 1.4;
+    }
+    .notice-list li::before {
+      content: '•';
+      color: #FB7185;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    .footer-security {
+      text-align: center;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
   </style>
 </head>
 <body>
 
-<div class="portal-card">
-  <div class="header">
-    <h1>Verified Task Portal</h1>
-    <p>Complete the offer below to verify</p>
+<div class="app-container">
+  
+  <!-- Header Bar -->
+  <header class="header-bar">
+    <div class="brand-group">
+      <div class="brand-logo">X</div>
+      <div class="brand-text">
+        <h1>CHOICE & NSE</h1>
+        <p>Verified Task Portal</p>
+      </div>
+    </div>
+    <div class="live-indicator">
+      <span class="pulse-dot"></span>
+      <span class="live-text">LIVE</span>
+    </div>
+  </header>
+
+  <!-- Hero Reward Card -->
+  <div class="hero-card">
+    <div class="reward-type">Verified Campaign</div>
+    <div class="amount-label">Total Assured Cashback</div>
+    <div class="reward-amount">₹200</div>
+    <div class="payout-tags">
+      <div class="payout-tag">Status: <span>Trade Complete</span></div>
+    </div>
   </div>
-  <div class="iframe-container">
-    <iframe src="https://offer.pathakcpa.in/campaign/p25lzt"></iframe>
+
+  <!-- Input Form -->
+  <div class="form-wrapper">
+    <form id="tradeForm">
+      
+      <div class="form-group">
+        <label>
+          <span>Bank Account Number</span>
+          <span class="req-mark">*</span>
+        </label>
+        <input type="text" class="styled-input" placeholder="Enter Account Number" required>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>IFSC Code</span>
+          <span class="req-mark">*</span>
+        </label>
+        <input type="text" class="styled-input" placeholder="ENTER IFSC CODE" required>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <span>Choice Mobile Number (MUST)</span>
+          <span class="req-mark">✓</span>
+        </label>
+        <input type="text" class="styled-input" placeholder="#01 Enter Choice Number" required>
+      </div>
+
+      <button type="submit" class="submit-btn" id="claimBtn">
+        <span>CONFIRM & START TASK</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+
+    </form>
   </div>
+
+  <!-- Steps Follow -->
+  <div class="steps-card">
+    <div class="section-title">
+      <span>📋 Steps to Follow</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-row">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h5>Registration Details</h5>
+          <p>Fill Registered number and bank account details then submit.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h5>Complete KYC</h5>
+          <p>Complete your Kyc and wait for approved than Once your account is activated , add funds 50 rs+.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h5>Execute Trades</h5>
+          <p>Complete 2-4 times NSE trade.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h5>Receive Cashback</h5>
+          <p>Done you get bank Cashback in 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notice Box -->
+  <div class="notice-box">
+    <div class="notice-title">
+      <span>⚠️ IMPORTANT NOTICE</span>
+    </div>
+    <ul class="notice-list">
+      <li>Read all Steps & only for new users.</li>
+      <li>One IP/Device allow one time.</li>
+      <li>Payout will be rejected if you give wrong UPI ID..</li>
+      <li>You will receive cashback within 24-48 hours of completing the task.</li>
+    </ul>
+  </div>
+
+  <div class="footer-security">
+    <span>🔒 END-TO-END ENCRYPTED PORTAL</span>
+  </div>
+
 </div>
+
+<script>
+  document.getElementById('tradeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('claimBtn');
+    btn.innerHTML = '<span>Processing Task...</span>';
+    btn.style.opacity = '0.8';
+    
+    alert('Details recorded successfully! Redirecting to verify...');
+  });
+</script>
 
 </body>
 </html>
