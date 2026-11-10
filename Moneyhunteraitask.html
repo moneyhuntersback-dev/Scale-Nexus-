@@ -49,8 +49,8 @@
             height: 100%;
             object-fit: cover;
             border-radius: 12px;
-            border: 2px solid #ff0055; /* Changed to Red */
-            box-shadow: 0 0 15px rgba(255,0,85,0.6);
+            border: 3px solid #ff0055;
+            box-shadow: 0 0 20px rgba(255,0,85,0.8);
         }
         .brand-text h1 {
             margin: 0;
@@ -69,7 +69,6 @@
             font-weight: 600;
         }
         
-        /* Live Badge with Red Outline Glow */
         .live-badge {
             background-color: #ff0055;
             color: white;
@@ -80,35 +79,36 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055;
-            animation: pulseBadge 1.5s infinite;
-            border: 1px solid #ffccd5;
+            box-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055;
+            animation: pulseBadge 1.2s infinite;
+            border: 2px solid #ffffff;
         }
         .live-dot {
             width: 8px;
             height: 8px;
             background-color: #fff;
             border-radius: 50%;
-            box-shadow: 0 0 8px #fff;
+            box-shadow: 0 0 10px #fff;
         }
 
         /* Verification Banner */
         .verified-banner {
             background: linear-gradient(90deg, #10b981, #059669);
             text-align: center;
-            padding: 6px;
+            padding: 8px;
             border-radius: 8px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             margin-bottom: 20px;
             letter-spacing: 1px;
-            color: #d1fae5;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(16,185,129,0.5);
         }
 
-        /* Reward Display with Breathing Glow */
+        /* Reward Display */
         .reward-card {
-            background: radial-gradient(circle, #223a5e 0%, #152238 100%);
+            background: radial-gradient(circle, #1a2f4d 0%, #0d1a2e 100%);
             border: 2px solid #38bdf8;
             border-radius: 16px;
             padding: 25px 15px;
@@ -116,23 +116,24 @@
             margin-bottom: 25px;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 0 15px rgba(56,189,248,0.2);
+            box-shadow: inset 0 0 20px rgba(56,189,248,0.3);
         }
         .reward-title {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 800;
             color: #fbbf24;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(251,191,36,0.8);
+            text-shadow: 0 0 15px rgba(251,191,36,1);
         }
         .reward-amount {
-            font-size: 60px;
+            font-size: 64px;
             font-weight: 900;
             color: #34d399;
             margin: 0;
-            animation: breatheGlow 2s infinite ease-in-out;
+            text-shadow: 0 0 25px rgba(52,211,153,1), 0 0 10px rgba(251,191,36,0.8);
+            animation: breatheGlow 1.8s infinite ease-in-out;
         }
 
         /* Form Area */
@@ -141,7 +142,7 @@
         }
         .input-label {
             display: block;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             margin-bottom: 8px;
             color: #e2e8f0;
@@ -154,33 +155,37 @@
             border: 2px solid #334155;
             border-radius: 12px;
             padding: 4px 12px;
-            padding-left: 55px; /* Space for the strict left logo box */
+            padding-left: 60px;
             transition: border-color 0.3s;
-            height: 60px;
+            height: 65px;
         }
         .input-wrapper:focus-within {
             border-color: #00f5d4;
+            box-shadow: 0 0 15px rgba(0,245,212,0.3);
         }
 
         /* Strict Left-Aligned Sliding Logo Box */
         .logo-slot {
             position: absolute;
-            left: 8px;
+            left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             background: #ffffff;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,245,212,0.5);
+            box-shadow: 0 0 12px rgba(0,245,212,0.6);
             border: 1px solid #cbd5e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .logo-slot img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            padding: 4px;
+            padding: 6px;
             position: absolute;
             top: 0;
             left: 0;
@@ -195,23 +200,25 @@
         .logo-slot img:nth-child(5) { animation-delay: 12s; }
 
         @keyframes carousel {
-            0%, 18% { opacity: 1; transform: translateY(0); }
-            20%, 98% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 0; transform: translateY(-20px); }
+            0%, 18% { opacity: 1; transform: translateY(0); scale: 1; }
+            20%, 98% { opacity: 0; transform: translateY(20px); scale: 0.9; }
+            100% { opacity: 0; transform: translateY(-20px); scale: 0.9; }
         }
 
         .upi-input {
             flex: 1;
             background: transparent;
             border: none;
-            color: white;
-            font-size: 16px;
+            color: #ffffff;
+            font-size: 18px;
             padding: 10px 0;
             outline: none;
             width: 100%;
+            font-weight: 600;
         }
         .upi-input::placeholder {
             color: #64748b;
+            font-weight: normal;
         }
 
         .submit-btn {
@@ -219,50 +226,51 @@
             background: linear-gradient(90deg, #10b981, #059669);
             color: white;
             border: none;
-            padding: 18px;
-            font-size: 16px;
+            padding: 20px;
+            font-size: 18px;
             font-weight: 900;
             border-radius: 12px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(16,185,129,0.6);
+            box-shadow: 0 0 25px rgba(16,185,129,0.8), 0 0 10px rgba(251,191,36,0.5);
             transition: transform 0.1s, filter 0.2s;
         }
         .submit-btn:hover {
-            filter: brightness(1.1);
+            filter: brightness(1.15);
         }
         .submit-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         /* Animations */
         @keyframes pulseBadge {
-            0% { transform: scale(1); box-shadow: 0 0 15px #ff0055; }
-            50% { transform: scale(1.05); box-shadow: 0 0 25px #ff0055, 0 0 40px #ff0055; }
-            100% { transform: scale(1); box-shadow: 0 0 15px #ff0055; }
+            0% { transform: scale(1); box-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; }
+            50% { transform: scale(1.08); box-shadow: 0 0 30px #ff0055, 0 0 60px #ff0055; border-color: #ff85a1; }
+            100% { transform: scale(1); box-shadow: 0 0 15px #ff0055, 0 0 30px #ff0055; }
         }
 
         @keyframes breatheGlow {
             0%, 100% { 
                 color: #34d399; 
-                text-shadow: 0 0 20px rgba(52,211,153,0.6), 0 0 10px rgba(251,191,36,0.3);
+                text-shadow: 0 0 25px rgba(52,211,153,0.8), 0 0 10px rgba(251,191,36,0.5);
+                transform: scale(1);
             }
             50% { 
                 color: #6ee7b7; 
-                text-shadow: 0 0 35px rgba(52,211,153,1), 0 0 20px rgba(251,191,36,0.8);
-                transform: scale(1.02);
+                text-shadow: 0 0 45px rgba(52,211,153,1), 0 0 25px rgba(251,191,36,1);
+                transform: scale(1.04);
             }
         }
 
         /* Steps Section */
         .section-title {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 800;
             color: #38bdf8;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 25px 0 15px 0;
+            margin: 30px 0 15px 0;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -270,7 +278,7 @@
         .step-card {
             background-color: #0f172a;
             border-left: 4px solid #00f5d4;
-            padding: 12px 15px;
+            padding: 14px 15px;
             border-radius: 0 10px 10px 0;
             margin-bottom: 12px;
             display: flex;
@@ -280,50 +288,52 @@
         .step-num {
             background-color: #1e293b;
             color: #00f5d4;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 900;
             flex-shrink: 0;
         }
         .step-text {
-            font-size: 13px;
+            font-size: 14px;
             color: #cbd5e1;
             line-height: 1.4;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Notice Box */
         .notice-box {
-            background-color: rgba(239, 68, 68, 0.15);
-            border: 1px solid #ef4444;
+            background-color: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
             border-radius: 12px;
-            padding: 15px;
-            margin-top: 25px;
+            padding: 16px;
+            margin-top: 30px;
+            box-shadow: 0 0 15px rgba(239,68,68,0.3);
         }
         .notice-header {
             color: #f87171;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         .notice-list {
             margin: 0;
             padding-left: 20px;
-            font-size: 12px;
+            font-size: 13px;
             color: #fca5a5;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-weight: 500;
         }
         .notice-list li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -356,25 +366,46 @@
         <div class="reward-amount">₹300</div>
     </div>
 
-    <!-- Gunaranteed Instant Redirect Form -->
-    <form onsubmit="event.preventDefault(); window.location.href='https://moneyhuntersback-dev.github.io/Scale-Nexus-/Moneyhunteraitask.html';">
-        <div class="form-group">
-            <label class="input-label">Enter Campaign Registered UPI ID</label>
-            <div class="input-wrapper">
-                <!-- Strict Left-Aligned Carousel Slot -->
-                <div class="logo-slot">
-                    <img src="https://cdn.phototourl.com/member/2026-11-10-d1040245-8fec-4827-8481-39290e814ba0.png" alt="BHIM">
-                    <img src="https://cdn.phototourl.com/member/2026-11-10-0f9af91e-bf67-44a1-a972-91d8066dbdad.png" alt="PhonePe">
-                    <img src="https://cdn.phototourl.com/member/2026-11-10-609a87bd-4518-4e25-8c9e-10dfc0d9306c.jpg" alt="FamPay">
-                    <img src="https://cdn.phototourl.com/member/2026-11-10-9f9cfa9e-61f8-4ae6-aa50-0722ecbcbcbc.png" alt="GPay">
-                    <img src="https://cdn.phototourl.com/member/2026-11-10-0e19eae9-d8c0-4cf2-8b7f-efc09fe85d37.png" alt="Paytm">
-                </div>
-                <input type="text" name="upi_id" class="upi-input" placeholder="example@upi" required>
+    <!-- Direct Navigation Form -->
+    <div class="form-group">
+        <label class="input-label">Enter Campaign Registered UPI ID</label>
+        <div class="input-wrapper">
+            <!-- Strict Left-Aligned Carousel Slot -->
+            <div class="logo-slot">
+                <img src="https://cdn.phototourl.com/member/2026-11-10-d1040245-8fec-4827-8481-39290e814ba0.png" alt="BHIM">
+                <img src="https://cdn.phototourl.com/member/2026-11-10-0f9af91e-bf67-44a1-a972-91d8066dbdad.png" alt="PhonePe">
+                <img src="https://cdn.phototourl.com/member/2026-11-10-609a87bd-4518-4e25-8c9e-10dfc0d9306c.jpg" alt="FamPay">
+                <img src="https://cdn.phototourl.com/member/2026-11-10-9f9cfa9e-61f8-4ae6-aa50-0722ecbcbcbc.png" alt="GPay">
+                <img src="https://cdn.phototourl.com/member/2026-11-10-0e19eae9-d8c0-4cf2-8b7f-efc09fe85d37.png" alt="Paytm">
             </div>
+            <input type="text" id="upiInput" class="upi-input" placeholder="example@upi" autocomplete="off">
         </div>
+    </div>
 
-        <button type="submit" class="submit-btn">CONFIRM & START TASK →</button>
-    </form>
+    <button type="button" class="submit-btn" id="submitBtn" onclick="triggerRedirect()">CONFIRM & START TASK →</button>
+
+    <script>
+        function triggerRedirect() {
+            const input = document.getElementById('upiInput');
+            if (!input.value || input.value.trim() === "") {
+                alert("Please enter your UPI ID first!");
+                input.focus();
+                return;
+            }
+            
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "PROCESSING...";
+            btn.style.opacity = "0.7";
+            
+            window.location.href = 'https://moneyhuntersback-dev.github.io/Scale-Nexus-/Moneyhunteraitask.html';
+        }
+
+        document.getElementById('upiInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                triggerRedirect();
+            }
+        });
+    </script>
 
     <!-- Steps -->
     <div class="section-title">Steps to Follow</div>
