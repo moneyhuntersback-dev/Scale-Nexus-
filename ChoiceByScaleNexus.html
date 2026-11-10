@@ -26,7 +26,7 @@
     body {
       background-color: var(--bg-deep);
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 230, 118, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 50% 0%, rgba(0, 230, 118, 0.12) 0%, transparent 60()),
         radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
       color: var(--text-pure);
       padding: 16px;
@@ -59,7 +59,6 @@
       gap: 12px;
     }
     
-    /* NEW: Red Glowing Logo Wrapper */
     .brand-logo-wrapper {
       width: 44px;
       height: 44px;
@@ -95,7 +94,6 @@
       text-transform: uppercase;
     }
 
-    /* NEW: Red LIVE Indicator */
     .live-indicator {
       background: rgba(255, 0, 85, 0.12);
       padding: 6px 14px;
@@ -165,7 +163,6 @@
       letter-spacing: 2px;
     }
 
-    /* NEW: Animated Pulsing Amount */
     .reward-amount {
       font-size: 64px;
       font-weight: 900;
@@ -184,7 +181,7 @@
         text-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
       }
       50% { 
-        transform: scale(1.1); 
+        transform: scale(1.08); 
         text-shadow: 0 0 35px rgba(0, 230, 118, 0.7);
       }
     }
@@ -393,7 +390,6 @@
   <!-- Header Bar -->
   <header class="header-bar">
     <div class="brand-group">
-      <!-- Choice Logo with Red Glow & Stroke -->
       <div class="brand-logo-wrapper">
         <img src="13801.jpg" alt="Choice Logo" class="brand-logo-img">
       </div>
@@ -402,7 +398,6 @@
         <p>Verified Task Portal</p>
       </div>
     </div>
-    <!-- Red LIVE Indicator -->
     <div class="live-indicator">
       <span class="pulse-dot"></span>
       <span class="live-text">LIVE</span>
@@ -413,10 +408,7 @@
   <div class="hero-card">
     <div class="reward-type">Verified Campaign</div>
     <div class="amount-label">Total Assured Cashback</div>
-    
-    <!-- Animated Pulsing Amount -->
     <div class="reward-amount">₹200</div>
-    
     <div class="payout-tags">
       <div class="payout-tag">Status: <span>Trade Complete</span></div>
     </div>
@@ -518,7 +510,6 @@
 
 </div>
 
-<!-- JavaScript (Untampered) -->
 <script>
   document.getElementById('tradeForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -532,3 +523,4 @@
 
 </body>
 </html>
+
