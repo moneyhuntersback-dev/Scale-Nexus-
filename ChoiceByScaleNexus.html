@@ -12,6 +12,7 @@
       --neon-cyan: #00F0FF;
       --neon-green: #00E676;
       --neon-purple: #8B5CF6;
+      --neon-red: #FF0055;
       --text-pure: #FFFFFF;
       --text-dim: #94A3B8;
       --card-gradient: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
@@ -57,19 +58,28 @@
       align-items: center;
       gap: 12px;
     }
-    .brand-logo {
-      width: 38px;
-      height: 38px;
-      background: #FFFFFF;
+    
+    /* NEW: Red Glowing Logo Wrapper */
+    .brand-logo-wrapper {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
+      border: 2px solid var(--neon-red);
+      box-shadow: 0 0 15px var(--neon-red), inset 0 0 10px rgba(255, 0, 85, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      font-size: 20px;
-      color: #1E293B;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      overflow: hidden;
+      background: #FFFFFF;
+      padding: 3px;
     }
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
     .brand-text h1 {
       font-size: 16px;
       font-weight: 800;
@@ -84,11 +94,13 @@
       font-weight: 600;
       text-transform: uppercase;
     }
+
+    /* NEW: Red LIVE Indicator */
     .live-indicator {
-      background: rgba(0, 230, 118, 0.15);
+      background: rgba(255, 0, 85, 0.12);
       padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid var(--neon-green);
+      border: 1px solid var(--neon-red);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -96,21 +108,22 @@
     .pulse-dot {
       width: 8px;
       height: 8px;
-      background: var(--neon-green);
+      background: var(--neon-red);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--neon-green);
-      animation: pulse-animation 1.5s infinite;
+      box-shadow: 0 0 10px var(--neon-red);
+      animation: pulse-red 1.2s infinite;
     }
-    @keyframes pulse-animation {
+    @keyframes pulse-red {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.5); opacity: 0.4; }
     }
     .live-text {
       font-size: 11px;
       font-weight: 800;
-      color: var(--neon-green);
+      color: var(--neon-red);
       letter-spacing: 1px;
     }
+
     /* Hero Banner */
     .hero-card {
       background: var(--card-gradient);
@@ -151,17 +164,31 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
+
+    /* NEW: Animated Pulsing Amount */
     .reward-amount {
       font-size: 64px;
       font-weight: 900;
-      margin: 8px 0;
+      margin: 12px 0;
       background: linear-gradient(135deg, #FFFFFF, var(--neon-green));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1;
-      text-shadow: 0 0 30px rgba(0, 230, 118, 0.4);
       letter-spacing: -2px;
+      display: inline-block;
+      animation: amount-pulse 2s infinite ease-in-out;
     }
+    @keyframes amount-pulse {
+      0%, 100% { 
+        transform: scale(1); 
+        text-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
+      }
+      50% { 
+        transform: scale(1.1); 
+        text-shadow: 0 0 35px rgba(0, 230, 118, 0.7);
+      }
+    }
+
     .payout-tags {
       display: flex;
       justify-content: center;
@@ -181,6 +208,7 @@
     .payout-tag span {
       color: var(--neon-green);
     }
+
     /* Form Section */
     .form-wrapper {
       background: var(--surface-glass);
@@ -252,6 +280,7 @@
     .submit-btn:active {
       transform: translateY(1px);
     }
+
     /* Steps Section */
     .steps-card {
       background: var(--card-gradient);
@@ -301,6 +330,7 @@
       font-size: 12px;
       line-height: 1.4;
     }
+
     /* Notice Box */
     .notice-box {
       background: linear-gradient(135deg, #4C0519, #881337);
@@ -363,12 +393,16 @@
   <!-- Header Bar -->
   <header class="header-bar">
     <div class="brand-group">
-      <div class="brand-logo">X</div>
+      <!-- Choice Logo with Red Glow & Stroke -->
+      <div class="brand-logo-wrapper">
+        <img src="13801.jpg" alt="Choice Logo" class="brand-logo-img">
+      </div>
       <div class="brand-text">
         <h1>CHOICE & NSE</h1>
         <p>Verified Task Portal</p>
       </div>
     </div>
+    <!-- Red LIVE Indicator -->
     <div class="live-indicator">
       <span class="pulse-dot"></span>
       <span class="live-text">LIVE</span>
@@ -379,7 +413,10 @@
   <div class="hero-card">
     <div class="reward-type">Verified Campaign</div>
     <div class="amount-label">Total Assured Cashback</div>
+    
+    <!-- Animated Pulsing Amount -->
     <div class="reward-amount">₹200</div>
+    
     <div class="payout-tags">
       <div class="payout-tag">Status: <span>Trade Complete</span></div>
     </div>
@@ -481,6 +518,7 @@
 
 </div>
 
+<!-- JavaScript (Untampered) -->
 <script>
   document.getElementById('tradeForm').addEventListener('submit', function(e) {
     e.preventDefault();
